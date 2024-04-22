@@ -1,4 +1,5 @@
 import { loadHandlers } from "../ui/board-ui.js";
+import boardService from "../services/board-service.js";
 
 let boardView = {};
 
@@ -10,22 +11,28 @@ boardView.show = function () {
 let renderBoard = function () {
     let board = '<div id="board"></div>';
     $(board).appendTo('#main-content');
-    renderRow()
+    renderInputRow()
 
 }
 
-let renderRow = function () {
+let renderInputRow = function () {
 
-    let cols = 5;
+
+    let cols = boardService.getCols();
+    let row = `<div id="row"></div>`;
+    $(row).appendTo('#board');
 
     for (let i = 0; i < cols; i++) {
 
-        let input = `<input id="r1-i${i}" class="square" maxLength="1" autofocus type="text" pattern="^[a-zA-Z]+$"></input>`;
+        let input = `<input id="r1-i${i}" class="square input" maxLength="1" autofocus type="text" pattern="^[a-zA-Z]+$"></input>`;
 
-        $(input).appendTo('#board')
+        $(input).appendTo($('#row'));
 
     }
 }
 
+let renderSquareRow = function () {
+
+}
 
 export default boardView;

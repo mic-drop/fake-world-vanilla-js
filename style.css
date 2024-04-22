@@ -15,6 +15,10 @@ body {
     margin: 5px;
 }
 
+.input {
+ 
+}
+
 #board {
     display: flex;
     justify-content: center;
