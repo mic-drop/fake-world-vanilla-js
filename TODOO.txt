@@ -1,1 +1,2 @@
 Make render Board round dynamic
+    make input values persist between round on new upper squareRow (result row maybe a good name)

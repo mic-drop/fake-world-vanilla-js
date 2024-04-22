@@ -4,17 +4,21 @@ import boardService from "../services/board-service.js";
 let boardView = {};
 
 boardView.show = function () {
+    $('#main-content').empty();
     let board = '<div id="board"></div>';
     $(board).appendTo('#main-content');
 
-    renderBoard();
-    loadHandlers();
+    renderBoard(boardService.currentRound);
+    /*     if (boardService.currentRound < boardService.maxRounds) {
+    
+            renderBoard(boardService.currentRound);
+        }; */
+
 }
 
 let renderBoard = function (round) {
 
     round = round || 0;
-    const cols = boardService.getCols();
     const rows = boardService.getRows();
 
     for (let row = 0; row < rows; row++) {
@@ -23,14 +27,9 @@ let renderBoard = function (round) {
             continue;
         }
         renderSquareRow(row);
-
     }
-
+    loadHandlers();
 }
-
-
-
-
 
 let renderInputRow = function () {
 
@@ -41,7 +40,6 @@ let renderInputRow = function () {
     for (let i = 0; i < cols; i++) {
 
         let input = `<input id="r1-i${i}" class="square input" maxLength="1" autofocus type="text" pattern="^[a-zA-Z]+$"></input>`;
-
         $(input).appendTo($('#row'));
 
     }

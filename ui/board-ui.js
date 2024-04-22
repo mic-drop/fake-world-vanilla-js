@@ -1,3 +1,6 @@
+import boardController from "../controllers/board-controller.js";
+import boardService from "../services/board-service.js";
+
 export function loadHandlers() {
 
     const squares = Object.values($('.input')).slice(0, 5);
@@ -9,7 +12,8 @@ export function loadHandlers() {
                     const word = squares.reduce((acc, element) => {
                         return acc + $(element).val() || '';
                     }, '');
-                    console.log(word);
+                    boardService.playRound();
+                    boardController.init();
                 }
             })
             return;
