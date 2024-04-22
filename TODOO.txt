@@ -1,3 +1,1 @@
-1 - Make all Rows
-    Wrap all rows in a <div id ='row-i'>;
-    Update board-handlers accodirngly 
+Make render Board round dynamic
