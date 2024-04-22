@@ -12,13 +12,14 @@ let renderBoard = function () {
     let board = '<div id="board"></div>';
     $(board).appendTo('#main-content');
     renderInputRow()
+    renderSquareRow();
 
 }
 
 let renderInputRow = function () {
 
 
-    let cols = boardService.getCols();
+    const cols = boardService.getCols();
     let row = `<div id="row"></div>`;
     $(row).appendTo('#board');
 
@@ -32,6 +33,13 @@ let renderInputRow = function () {
 }
 
 let renderSquareRow = function () {
+    const cols = boardService.getCols();
+    let row = `<div id="row-square"></div>`;
+    $(row).appendTo('#board');
+    for (let i = 0; i < cols; i++) {
+        let square = `<div id="r2-i${i}" class="square"></div>`
+        $(square).appendTo('#row-square');
+    }
 
 }
 
