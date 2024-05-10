@@ -9,11 +9,6 @@ boardView.show = function () {
     $(board).appendTo('#main-content');
 
     renderBoard(boardService.currentRound);
-    /*     if (boardService.currentRound < boardService.maxRounds) {
-    
-            renderBoard(boardService.currentRound);
-        }; */
-
 }
 
 let renderBoard = function (round) {

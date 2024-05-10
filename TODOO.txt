@@ -1,2 +1,3 @@
-Make render Board round dynamic
-    make input values persist between round on new upper squareRow (result row maybe a good name)
+TO DO
+-   On last input, validate that all other inputs are valid
+-   Make result row show green, yellows and reds
