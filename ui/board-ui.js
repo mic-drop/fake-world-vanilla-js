@@ -12,7 +12,7 @@ export function loadHandlers(currentRow) {
                     const word = squares.reduce((acc, element) => {
                         return acc + $(element).val() || '';
                     }, '');
-                    boardService.playRound();
+                    boardService.playRound(word);
                     boardController.init();
                 }
             })

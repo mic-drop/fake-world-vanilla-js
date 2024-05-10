@@ -24,8 +24,6 @@ let renderBoard = function (round) {
     for (let row = 0; row < rows; row++) {
         if (round === row) {
             renderInputRow(row);
-            loadHandlers(row);
-            $(`#r${row}-i0`).focus();
             continue;
         }
         renderSquareRow(row);
@@ -35,7 +33,7 @@ let renderBoard = function (round) {
 let renderInputRow = function (currentRow) {
     console.log(currentRow);
     const cols = boardService.getCols();
-    let row = `<div id="row"></div>`;
+    let row = `<div id="row" class="row"></div>`;
     $(row).appendTo('#board');
 
     for (let i = 0; i < cols; i++) {
@@ -44,15 +42,23 @@ let renderInputRow = function (currentRow) {
         $(input).appendTo($('#row'));
 
     }
+    loadHandlers(currentRow);
+    $(`#r${currentRow}-i0`).focus();
 }
 
 let renderSquareRow = function (currentRow) {
     const cols = boardService.getCols();
-    let row = `<div id="row-${currentRow}-square"></div>`;
+    let row = `<div id="row-${currentRow}-square" class="row"></div>`;
     $(row).appendTo('#board');
     for (let i = 0; i < cols; i++) {
-        let square = `<div id="r${currentRow}-i${i}" class="square"></div>`
+        let square = `<div id="r${currentRow}-i${i}" class="square"></div>`;
+
         $(square).appendTo(`#row-${currentRow}-square`);
+        if (currentRow === boardService.currentRound - 1) {
+            console.log(boardService.lastWord);
+            $(`#r${currentRow}-i${i}`).html(boardService.lastWord[i]);
+            console.log("fuck");
+        }
     }
 
 }
