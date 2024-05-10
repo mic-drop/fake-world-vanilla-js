@@ -1,7 +1,7 @@
 import boardController from "../controllers/board-controller.js";
 import boardService from "../services/board-service.js";
 
-export function loadHandlers() {
+export function loadHandlers(currentRow) {
 
     const squares = Object.values($('.input')).slice(0, 5);
 
@@ -20,7 +20,7 @@ export function loadHandlers() {
         }
         $(element).on("keyup", (e) => {
             if ((e.keyCode >= 65 && e.keyCode <= 90) || (e.keyCode >= 97 && e.keyCode <= 122)) {
-                $(`#r1-i${i + 1}`).focus();
+                $(`#r${currentRow}-i${i + 1}`).focus();
             }
         })
 

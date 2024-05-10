@@ -4,7 +4,7 @@ import boardView from "./../views/board-view.js"
 let boardController = {};
 
 boardController.init = function () {
-    console.log("controller triggered");
+    console.log("board controller triggered");
     boardView.show();
 }
 

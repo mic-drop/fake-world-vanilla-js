@@ -23,23 +23,24 @@ let renderBoard = function (round) {
 
     for (let row = 0; row < rows; row++) {
         if (round === row) {
-            renderInputRow();
+            renderInputRow(row);
+            loadHandlers(row);
+            $(`#r${row}-i0`).focus();
             continue;
         }
         renderSquareRow(row);
     }
-    loadHandlers();
 }
 
-let renderInputRow = function () {
-
+let renderInputRow = function (currentRow) {
+    console.log(currentRow);
     const cols = boardService.getCols();
     let row = `<div id="row"></div>`;
     $(row).appendTo('#board');
 
     for (let i = 0; i < cols; i++) {
 
-        let input = `<input id="r1-i${i}" class="square input" maxLength="1" autofocus type="text" pattern="^[a-zA-Z]+$"></input>`;
+        let input = `<input id="r${currentRow}-i${i}" class="square input" maxLength="1" autofocus type="text" pattern="^[a-zA-Z]+$"></input>`;
         $(input).appendTo($('#row'));
 
     }
