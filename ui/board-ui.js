@@ -12,8 +12,10 @@ export function loadHandlers(currentRow) {
                     const word = squares.reduce((acc, element) => {
                         return acc + $(element).val() || '';
                     }, '');
-                    boardService.playRound(word);
-                    boardController.init();
+                    if (word.length === 5) {
+                        boardService.playRound(word);
+                        boardController.init();
+                    }
                 }
             })
             return;
