@@ -2,14 +2,14 @@ let boardService = {
     getCols: () => 5,
     getRows: () => 6,
     currentRound: 0,
-    lastWord: ''
+    lastWord: []
 };
 
 boardService.maxRounds = boardService.getCols();
 
 boardService.playRound = function (lastWord) {
     boardService.currentRound++;
-    boardService.lastWord = lastWord;
+    boardService.lastWord.push(lastWord);
 }
 
 export default boardService;

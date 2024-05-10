@@ -54,10 +54,9 @@ let renderSquareRow = function (currentRow) {
         let square = `<div id="r${currentRow}-i${i}" class="square"></div>`;
 
         $(square).appendTo(`#row-${currentRow}-square`);
-        if (currentRow === boardService.currentRound - 1) {
+        if (currentRow < boardService.currentRound) {
             console.log(boardService.lastWord);
-            $(`#r${currentRow}-i${i}`).html(boardService.lastWord[i]);
-            console.log("fuck");
+            $(`#r${currentRow}-i${i}`).html(boardService.lastWord[currentRow][i]);
         }
     }
 
