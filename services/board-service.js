@@ -16,7 +16,7 @@ boardService.playRound = function (lastWord) {
 
 const checkWord = function (lastWord) {
     const classes = [];
-    lastWord.forEach(letter => {
+    lastWord.split('').forEach(letter => {
         classes.push(checkLetter(letter));
     });
     return classes;
