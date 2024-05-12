@@ -1,3 +1,11 @@
 TO DO
--   On last input, validate that all other inputs are valid
 -   Make result row show green, yellows and reds
+    * We need to pass the state of squares to view on rendering
+    * We are having this problem
+        - Because we are rendering all rows each time, it obliges to keep state of every guess and result of each round
+        - We should find a way of only rendering the necessary lines
+        - The rendering of rounds should be different from the initial rendering of the board
+            - For round rendering, we would only need to render the guessed row and the new input line
+
+-   Create a service for an API
+-   On last input, validate that all other inputs are valid

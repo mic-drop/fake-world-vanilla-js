@@ -34,3 +34,15 @@ body {
     align-items: center;
     flex-direction: column;
 }
+
+.correct {
+    background-color: rgb(108, 155, 108);
+}
+
+.miss {
+    background-color: rgb(242, 242, 127);
+}
+
+.wrong {
+    background-color: rgb(189, 174, 174);
+}
