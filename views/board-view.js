@@ -4,57 +4,83 @@ import boardService from "../services/board-service.js";
 let boardView = {};
 
 boardView.show = function () {
-    $('#main-content').empty();
-    let board = '<div id="board"></div>';
-    $(board).appendTo('#main-content');
-
-    renderBoard(boardService.currentRound);
+    //$('#main-content').empty();
+    if (boardService.currentRound === 0) {
+        let board = '<div id="board"></div>';
+        $(board).appendTo('#main-content');
+        renderBoard();
+        return;
+    }
+    renderRound();
 }
 
-let renderBoard = function (round) {
 
-    round = round || 0;
+let renderBoard = function () {
+
     const rows = boardService.getRows();
 
     for (let row = 0; row < rows; row++) {
-        if (round === row) {
-            renderInputRow(row);
-            continue;
+
+        let divRow = `<div id="row-${row}-square" class="row"></div>`;
+        $(divRow).appendTo('#board');
+        if (row > 0) {
+            renderBlankSquareRow(row);
         }
-        renderSquareRow(row);
     }
+    renderInputRow(0);
+
 }
 
+
+let renderRound = function () {
+    const currentRound = boardService.currentRound;
+
+    renderResultSquareRow(currentRound - 1);
+    renderInputRow(currentRound);
+
+}
+
+
 let renderInputRow = function (currentRow) {
-    console.log(currentRow);
+
+    const row = $(`#row-${currentRow}-square`);
+    $(row).empty();
+
     const cols = boardService.getCols();
-    let row = `<div id="row" class="row"></div>`;
-    $(row).appendTo('#board');
 
     for (let i = 0; i < cols; i++) {
 
         let input = `<input id="r${currentRow}-i${i}" class="square input" maxLength="1" autofocus type="text" pattern="^[a-zA-Z]+$"></input>`;
-        $(input).appendTo($('#row'));
+        $(input).appendTo(row);
 
     }
     loadHandlers(currentRow);
     $(`#r${currentRow}-i0`).focus();
 }
 
-let renderSquareRow = function (currentRow) {
+let renderBlankSquareRow = function (currentRow) {
+
     const cols = boardService.getCols();
-    let row = `<div id="row-${currentRow}-square" class="row"></div>`;
-    $(row).appendTo('#board');
+    let row = $(`#row-${currentRow}-square`);
     for (let i = 0; i < cols; i++) {
         let square = `<div id="r${currentRow}-i${i}" class="square"></div>`;
 
-        $(square).appendTo(`#row-${currentRow}-square`);
-        if (currentRow < boardService.currentRound) {
-            console.log(boardService.lastWord);
-            $(`#r${currentRow}-i${i}`).html(boardService.lastWord[currentRow][i]);
-        }
+        $(square).appendTo(row);
     }
+}
 
+let renderResultSquareRow = function (currentRow) {
+    console.log("hey");
+    const cols = boardService.getCols();
+    let row = $(`#row-${currentRow}-square`);
+    $(row).empty();
+    renderBlankSquareRow(currentRow);
+
+    for (let i = 0; i < cols; i++) {
+        let square = $(`#r${currentRow}-i${i}`);
+        $(square).html(boardService.lastWord[i]);
+        $(square).addClass(boardService.classes[i]);
+    }
 }
 
 export default boardView;

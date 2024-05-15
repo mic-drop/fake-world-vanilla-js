@@ -2,7 +2,8 @@ let boardService = {
     getCols: () => 5,
     getRows: () => 6,
     currentRound: 0,
-    lastWord: [],
+    lastWord: "",
+    classes: [],
     correctWord: "tears"
 };
 
@@ -10,14 +11,15 @@ boardService.maxRounds = boardService.getCols();
 
 boardService.playRound = function (lastWord) {
     boardService.currentRound++;
-    boardService.lastWord.push(lastWord);
-    checkWord(lastWord);
+    boardService.lastWord = lastWord;
+    boardService.classes = checkWord(lastWord);
+    console.log(boardService.classes);
 }
 
 const checkWord = function (lastWord) {
     const classes = [];
-    lastWord.split('').forEach(letter => {
-        classes.push(checkLetter(letter));
+    lastWord.split('').forEach((letter, index) => {
+        classes.push(checkLetter(letter, index));
     });
     return classes;
 }
