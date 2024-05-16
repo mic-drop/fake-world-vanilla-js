@@ -4,7 +4,6 @@ import boardService from "../services/board-service.js";
 let boardView = {};
 
 boardView.show = function () {
-    //$('#main-content').empty();
     if (boardService.currentRound === 0) {
         let board = '<div id="board"></div>';
         $(board).appendTo('#main-content');
@@ -13,7 +12,6 @@ boardView.show = function () {
     }
     renderRound();
 }
-
 
 let renderBoard = function () {
 
@@ -31,13 +29,11 @@ let renderBoard = function () {
 
 }
 
-
 let renderRound = function () {
     const currentRound = boardService.currentRound;
 
     renderResultSquareRow(currentRound - 1);
     renderInputRow(currentRound);
-
 }
 
 
