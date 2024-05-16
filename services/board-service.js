@@ -13,12 +13,11 @@ boardService.playRound = function (lastWord) {
     boardService.currentRound++;
     boardService.lastWord = lastWord;
     boardService.classes = checkWord(lastWord);
-    console.log(boardService.classes);
 }
 
 const checkWord = function (lastWord) {
     const classes = [];
-    lastWord.split('').forEach((letter, index) => {
+    lastWord.toLowerCase().split('').forEach((letter, index) => {
         classes.push(checkLetter(letter, index));
     });
     return classes;

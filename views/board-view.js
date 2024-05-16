@@ -66,15 +66,15 @@ let renderBlankSquareRow = function (currentRow) {
 }
 
 let renderResultSquareRow = function (currentRow) {
-    console.log("hey");
     const cols = boardService.getCols();
     let row = $(`#row-${currentRow}-square`);
-    $(row).empty();
-    renderBlankSquareRow(currentRow);
 
+    $(row).empty();
+
+    renderBlankSquareRow(currentRow);
     for (let i = 0; i < cols; i++) {
         let square = $(`#r${currentRow}-i${i}`);
-        $(square).html(boardService.lastWord[i]);
+        $(square).html(boardService.lastWord[i].toUpperCase());
         $(square).addClass(boardService.classes[i]);
     }
 }
