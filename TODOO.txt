@@ -3,4 +3,3 @@ TO DO
 -   On last input, validate that all other inputs are valid
 -   End Game views: wining && losing
 -   Stop refresh from resetting game
--   Make all letters Upper Case
