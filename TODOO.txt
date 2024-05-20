@@ -1,5 +1,6 @@
 TO DO
 -   Give ony one yellow square if the letter only comes up once
+    *   Don't render yellow if the missing letter has already been discovered
 -   Create a service for 5 letter word API
 -   On last input, validate that all other inputs are valid
 -   Stop refresh from resetting game

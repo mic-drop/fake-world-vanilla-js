@@ -37,10 +37,26 @@ const checkLetter = function (letter, index) {
         return "correct";
     }
     if (board.correctWord.includes(letter)) {
-
+        let count = countLetter(board.lastWord.substring(0, index + 1), letter);
+        console.log(count);
+        if (count > 1) {
+            return "wrong"
+        }
         return "miss";
     }
     return "wrong";
+}
+
+const countLetter = function (arr, letter) {
+    console.log('This is letter ', letter);
+    console.log('This is arr ', arr);
+    let counter = 0;
+    arr.split('').forEach(n => {
+        if (n === letter) {
+            counter++;
+        }
+    })
+    return counter;
 }
 
 boardService.getLastWord = function () {

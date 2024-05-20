@@ -1,4 +1,3 @@
-
 import boardService from "../services/board-service.js";
 import boardView from "./../views/board-view.js"
 import gameOverView from "../views/gameover-view.js";
