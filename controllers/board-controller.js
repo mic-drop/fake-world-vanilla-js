@@ -12,8 +12,12 @@ boardController.init = function () {
 
 boardController.playRound = function (word) {
     boardService.playRound(word);
+    console.log('ho!');
+    if (boardService.hasWon()) {
+        console.log('Hi!');
+        gameOverView.show();
+    }
     boardView.show();
-    gameOverView.show();
 
 }
 

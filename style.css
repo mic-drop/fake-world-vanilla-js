@@ -40,6 +40,13 @@ body {
     height: 50%;
     width: 50%;
     background-color: rgb(108, 155, 108);
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bolder;
+    font-size: xx-large;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .correct {

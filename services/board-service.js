@@ -14,6 +14,17 @@ boardService.playRound = function (lastWord) {
     board.classes = checkWord(lastWord);
 }
 
+boardService.hasWon = function () {
+    let hasWon = true;
+    console.log(board.classes)
+    board.classes.forEach(n => {
+        if (n !== 'correct') {
+            hasWon = false;
+        }
+    })
+    return hasWon;
+}
+
 const checkWord = function (lastWord) {
     const classes = [];
     lastWord.toLowerCase().split('').forEach((letter, index) => {
