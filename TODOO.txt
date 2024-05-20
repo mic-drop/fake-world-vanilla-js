@@ -1,8 +1,5 @@
 TO DO
--   End Game views: wining && losing
-    *   Invoke gameover view only if correct word has been guesses
-            OR if max rounds has been reached
-    *   Create classes for winning and losing the game
+-   Give ony one yellow square if the letter only comes up once
 -   Create a service for 5 letter word API
 -   On last input, validate that all other inputs are valid
 -   Stop refresh from resetting game
