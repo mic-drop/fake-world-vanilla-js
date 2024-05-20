@@ -35,6 +35,13 @@ body {
     flex-direction: column;
 }
 
+#gameover {
+    position: absolute;
+    height: 50%;
+    width: 50%;
+    background-color: rgb(108, 155, 108);
+}
+
 .correct {
     background-color: rgb(108, 155, 108);
 }
