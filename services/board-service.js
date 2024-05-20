@@ -1,18 +1,17 @@
+import board from '../model/board.js'
+
 let boardService = {
-    getCols: () => 5,
-    getRows: () => 6,
-    currentRound: 0,
-    lastWord: "",
-    classes: [],
-    correctWord: "tears"
+    getCols: () => board.getCols(),
+    getRows: () => board.getRows(),
 };
 
-boardService.maxRounds = boardService.getCols();
-
+boardService.maxRounds = function () {
+    board.getCols();
+}
 boardService.playRound = function (lastWord) {
-    boardService.currentRound++;
-    boardService.lastWord = lastWord;
-    boardService.classes = checkWord(lastWord);
+    board.currentRound++;
+    board.lastWord = lastWord;
+    board.classes = checkWord(lastWord);
 }
 
 const checkWord = function (lastWord) {
@@ -24,14 +23,26 @@ const checkWord = function (lastWord) {
 }
 
 const checkLetter = function (letter, index) {
-    if (boardService.correctWord[index] === letter) {
+    if (board.correctWord[index] === letter) {
         return "correct";
     }
-    if (boardService.correctWord.includes(letter)) {
+    if (board.correctWord.includes(letter)) {
 
         return "miss";
     }
     return "wrong";
+}
+
+boardService.getLastWord = function () {
+    return board.lastWord;
+}
+
+boardService.getClasses = function () {
+    return board.classes;
+}
+
+boardService.getCurrentRound = function () {
+    return board.currentRound;
 }
 
 export default boardService;
