@@ -16,7 +16,6 @@ boardService.playRound = function (lastWord) {
 
 boardService.hasWon = function () {
     let hasWon = true;
-    console.log(board.classes)
     board.classes.forEach(n => {
         if (n !== 'correct') {
             hasWon = false;
