@@ -11,7 +11,9 @@ boardService.maxRounds = function () {
 boardService.playRound = function (lastWord) {
     board.currentRound++;
     board.lastWord = lastWord;
-    board.classes = checkWord(lastWord);
+    // board.classes = checkWord(lastWord);
+    checkGreens(lastWord);
+    checkYellows(lastWord);
 }
 
 boardService.hasWon = function () {
@@ -48,15 +50,43 @@ const checkLetter = function (letter, index) {
 }
 
 const countLetter = function (arr, letter) {
-    console.log('This is letter ', letter);
-    console.log('This is arr ', arr);
     let counter = 0;
-    arr.split('').forEach(n => {
+    arr.forEach(n => {
         if (n === letter) {
             counter++;
         }
     })
     return counter;
+}
+
+const checkGreens = function (attemptWord) {
+    attemptWord.split('').forEach((n, index) => {
+        if (n === board.correctWord[index]) {
+            board.classes[index] = 'correct';
+            return;
+        }
+        board.classes[index] = 'wrong';
+    })
+}
+
+const checkYellows = function (lastAttempt) {
+    const noGreensCorrect = board.correctWord.split('').filter((n, index) => board.classes[index] !== 'correct');
+    const noGreensAttempt = lastAttempt.split('').filter((n, index) => board.classes[index] !== 'correct');
+    let yellowCounter = 0;
+
+    noGreensAttempt.forEach((n, index) => {
+        if (noGreensCorrect.includes(n)) {
+            yellowCounter++;
+
+            let counterCorrect = countLetter(noGreensCorrect, n);
+
+            if (yellowCounter <= counterCorrect) {
+                board.classes[index] = 'miss';
+
+            }
+        }
+    })
+
 }
 
 boardService.getLastWord = function () {
