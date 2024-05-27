@@ -1,9 +1,10 @@
+import board from "../model/board.js";
 
-const doShit = async function () {
+const getWord = async function () {
     const URL_API = "https://random-word-api.herokuapp.com/word?length=5";
     const response = await fetch(URL_API);
     const word = await response.json();
-    console.log(word);
+    board.correctWord = word[0];
 }
 
-export default doShit;
+export default getWord;

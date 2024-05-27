@@ -46,6 +46,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+}
+
+#correct-word {
+    font-weight: bolder;
+    border: 4px white solid;
+    padding: 30px;
 }
 
 .won {

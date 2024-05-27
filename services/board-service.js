@@ -3,6 +3,7 @@ import board from '../model/board.js'
 let boardService = {
     getCols: () => board.getCols(),
     getRows: () => board.getRows(),
+    getCorrectWord: () => board.correctWord
 };
 
 boardService.maxRounds = function () {
@@ -11,7 +12,6 @@ boardService.maxRounds = function () {
 boardService.playRound = function (lastWord) {
     board.currentRound++;
     board.lastWord = lastWord;
-    // board.classes = checkWord(lastWord);
     checkGreens(lastWord);
     checkYellows(lastWord);
 }

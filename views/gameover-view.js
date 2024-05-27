@@ -6,8 +6,12 @@ gameOverView.show = function () {
     $('body').append(gameOverDiv);
 }
 
-gameOverView.lostShow = function () {
-    let lostView = `<div id="gameover" class="lost"> YOU LOSE =( !</div>`;
+gameOverView.lostShow = function (word) {
+    let lostView = `<div id="gameover" class="lost">
+     <p>YOU LOSE =( !</p>
+     <p>Correct Word was </p>
+     <h1 id="correct-word">${word.toUpperCase()}</h1>
+        </div>`;
 
     $('#main-content').css('filter', 'blur(9px)');
     $('body').append(lostView);

@@ -4,7 +4,7 @@ const board = {
     currentRound: 0,
     lastWord: "",
     classes: [],
-    correctWord: "teara"
+    correctWord: ""
 }
 
 export default board;
