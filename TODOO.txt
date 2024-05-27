@@ -2,3 +2,4 @@ TO DO
 -   Create a service for 5 letter word API
 -   On last input, validate that all other inputs are valid
 -   Stop refresh from resetting game
+-   Make it mobile friendly
