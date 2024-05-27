@@ -1,5 +1,8 @@
 TO DO
 -   Create a service for 5 letter word API
+    -   Refactor the name
+    -   Call it at beginig of the game
+    -   Set model's secretWord with result value
 -   On last input, validate that all other inputs are valid
 -   Stop refresh from resetting game
 -   Make it mobile friendly
