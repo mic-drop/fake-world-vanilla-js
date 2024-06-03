@@ -9,3 +9,4 @@ TO DO
     - print events on input change
 -   Make user input lowercase or uppercase
     - Be consistent
+-   Go backwards() on last input Square should only go backwards the second time its clicked
