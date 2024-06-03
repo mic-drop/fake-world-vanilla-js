@@ -6,3 +6,6 @@ TO DO
 -   On last input, validate that all other inputs are valid
 -   Stop refresh from resetting game
 -   Make it mobile friendly
+    - print events on input change
+-   Make user input lowercase or uppercase
+    - Be consistent
