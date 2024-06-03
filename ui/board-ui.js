@@ -23,7 +23,8 @@ export function loadHandlers(currentRow) {
             })
             return;
         }
-        $(element).on("keyup", (e) => {
+        $(element).on("input", (e) => {
+            console.log('This is event ', e);
             defaultButton(e, currentRow, i);
             if (i > 0) {
                 goBackwards(element, e, currentRow, i);
@@ -36,6 +37,7 @@ export function loadHandlers(currentRow) {
 const defaultButton = function (e, currentRow, index) {
 
     if ((e.keyCode >= 65 && e.keyCode <= 90) || (e.keyCode >= 97 && e.keyCode <= 122)) {
+        console.log(e.keyCode);
         $(`#r${currentRow}-i${index + 1}`).focus();
         return;
     }

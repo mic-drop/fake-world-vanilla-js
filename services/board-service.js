@@ -11,9 +11,9 @@ boardService.maxRounds = function () {
 }
 boardService.playRound = function (lastWord) {
     board.currentRound++;
-    board.lastWord = lastWord;
-    checkGreens(lastWord);
-    checkYellows(lastWord);
+    board.lastWord = lastWord.toLowerCase();
+    checkGreens(board.lastWord);
+    checkYellows(board.lastWord);
 }
 
 boardService.hasWon = function () {
