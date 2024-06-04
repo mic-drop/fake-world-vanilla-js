@@ -1,4 +1,4 @@
-import { loadHandlers } from "../ui/board-ui.js";
+import { loadMobileHandlers } from "../ui/mobile-board-ui.js";
 import boardService from "../services/board-service.js";
 
 let boardView = {};
@@ -50,7 +50,7 @@ let renderInputRow = function (currentRow) {
         $(input).appendTo(row);
 
     }
-    loadHandlers(currentRow);
+    loadMobileHandlers(currentRow);
     $(`#r${currentRow}-i0`).focus();
 }
 
