@@ -72,20 +72,39 @@ const checkGreens = function (attemptWord) {
 const checkYellows = function (lastAttempt) {
     const noGreensCorrect = board.correctWord.split('').filter((n, index) => board.classes[index] !== 'correct');
     const noGreensAttempt = lastAttempt.split('').filter((n, index) => board.classes[index] !== 'correct');
-    let yellowCounter = 0;
 
-    noGreensAttempt.forEach((n, index) => {
+    lastAttempt.split('').forEach((n, index) => {
+        if (board.classes[index] === 'correct') {
+            return;
+        }
         if (noGreensCorrect.includes(n)) {
-            yellowCounter++;
-
             let counterCorrect = countLetter(noGreensCorrect, n);
 
-            if (yellowCounter <= counterCorrect) {
+            console.log("This is counter in correct word", counterCorrect);
+            //let counterSubstringAttempt = countLetter(lastAttempt.substring(0, index + 1).split(''), n);
+            let counterSubstringAttempt = countLetter(noGreensAttempt.join('').substring(0, index + 1).split(''), n);
+            console.log("This is substring", noGreensAttempt.join('').substring(0, index + 1).split(''));
+            console.log("This is counter substring", counterSubstringAttempt);
+            if (counterSubstringAttempt <= counterCorrect) {
                 board.classes[index] = 'miss';
-
             }
         }
+
     })
+
+    /*     noGreensAttempt.forEach((n, index) => {
+            if (noGreensCorrect.includes(n)) {
+    
+                let counterCorrect = countLetter(noGreensCorrect, n);
+    
+                let timesLetterAppearsInAttemptSubstring = countLetter()
+    
+                if (yellowCounter <= counterCorrect) {
+                    board.classes[index] = 'miss';
+    
+                }
+            }
+        }) */
 
 }
 
