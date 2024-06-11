@@ -76,30 +76,49 @@ const checkYellows = function (lastAttempt) {
     const noGreensCorrect = board.correctWord.split('').filter((n, index) => board.classes[index] !== 'correct');
     const noGreensAttempt = lastAttempt.split('').filter((n, index) => board.classes[index] !== 'correct');
 
-    lastAttempt.split('').forEach((n, index) => {
-        if (board.classes[index] === 'correct') {
-            return;
-        }
+
+    const attemptSet = new Set(lastAttempt);
+    console.log(attemptSet);
+    attemptSet.forEach(n => {
         if (noGreensCorrect.includes(n)) {
-            console.log('this is letter -> ' + n + ' index -> ' + index + ' of ' + lastAttempt);
-
-            let counterCorrect = countLetter(noGreensCorrect, n);
-            console.log("There is ", counterCorrect + " yellow " + n + " misplaced");
-
-            let substring = noGreensAttempt.join('').substring(0, index).split('');
-            substring = substring == '' ? noGreensAttempt[0] : substring;
-            console.log("This is substring", substring);
-            console.log("Type of substring", typeof substring)
-
-            let counterSubstringAttempt = countLetter(substring, n);
-            console.log("This is counter substring", counterSubstringAttempt);
-
-            if (counterSubstringAttempt <= counterCorrect) {
-                board.classes[index] = 'miss';
-            }
+            let yellowLetterCount = countLetter(noGreensCorrect, n);
+            console.log(yellowLetterCount);
+            lastAttempt.split('').forEach((letter, index) => {
+                if (letter === n && yellowLetterCount > 0 && board.classes[index] != 'correct') {
+                    board.classes[index] = 'miss';
+                    yellowLetterCount--;
+                }
+            })
         }
+        return;
+    });
 
-    })
+
+
+    /*     lastAttempt.split('').forEach((n, index) => {
+            if (board.classes[index] === 'correct') {
+                return;
+            }
+            if (noGreensCorrect.includes(n)) {
+                console.log('this is letter -> ' + n + ' index -> ' + index + ' of ' + lastAttempt);
+    
+                let counterCorrect = countLetter(noGreensCorrect, n);
+                console.log("There is ", counterCorrect + " yellow " + n + " misplaced");
+    
+                let substring = noGreensAttempt.join('').substring(0, index).split('');
+                substring = substring == '' ? noGreensAttempt[0] : substring;
+                // console.log("This is substring", substring);
+                // console.log("Type of substring", typeof substring)
+    
+                let counterSubstringAttempt = countLetter(substring, n);
+                console.log("This is counter substring", counterSubstringAttempt);
+    
+                if (counterSubstringAttempt <= counterCorrect) {
+                    board.classes[index] = 'miss';
+                }
+            }
+    
+        }) */
 
     /*     noGreensAttempt.forEach((n, index) => {
             if (noGreensCorrect.includes(n)) {
