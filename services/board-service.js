@@ -40,7 +40,6 @@ const checkLetter = function (letter, index) {
     }
     if (board.correctWord.includes(letter)) {
         let count = countLetter(board.lastWord.substring(0, index + 1), letter);
-        console.log(count);
         if (count > 1) {
             return "wrong"
         }
@@ -50,6 +49,9 @@ const checkLetter = function (letter, index) {
 }
 
 const countLetter = function (arr, letter) {
+    if (typeof arr === 'string') {
+        arr = [...arr];
+    }
     let counter = 0;
     arr.forEach(n => {
         if (n === letter) {
@@ -71,22 +73,23 @@ const checkGreens = function (attemptWord) {
 
 const checkYellows = function (lastAttempt) {
     const noGreensCorrect = board.correctWord.split('').filter((n, index) => board.classes[index] !== 'correct');
-    const noGreensAttempt = lastAttempt.split('').filter((n, index) => board.classes[index] !== 'correct');
-    let yellowCounter = 0;
 
-    noGreensAttempt.forEach((n, index) => {
+    const attemptSet = new Set(lastAttempt);
+
+    attemptSet.forEach(n => {
+
         if (noGreensCorrect.includes(n)) {
-            yellowCounter++;
+            let yellowLetterCount = countLetter(noGreensCorrect, n);
 
-            let counterCorrect = countLetter(noGreensCorrect, n);
-
-            if (yellowCounter <= counterCorrect) {
-                board.classes[index] = 'miss';
-
-            }
+            lastAttempt.split('').forEach((letter, index) => {
+                if (letter === n && yellowLetterCount > 0 && board.classes[index] != 'correct') {
+                    board.classes[index] = 'miss';
+                    yellowLetterCount--;
+                }
+            })
         }
-    })
-
+        return;
+    });
 }
 
 boardService.getLastWord = function () {
