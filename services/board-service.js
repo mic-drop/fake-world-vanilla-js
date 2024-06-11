@@ -50,6 +50,9 @@ const checkLetter = function (letter, index) {
 }
 
 const countLetter = function (arr, letter) {
+    if (typeof arr === 'string') {
+        arr = [...arr];
+    }
     let counter = 0;
     arr.forEach(n => {
         if (n === letter) {
@@ -78,13 +81,19 @@ const checkYellows = function (lastAttempt) {
             return;
         }
         if (noGreensCorrect.includes(n)) {
-            let counterCorrect = countLetter(noGreensCorrect, n);
+            console.log('this is letter -> ' + n + ' index -> ' + index + ' of ' + lastAttempt);
 
-            console.log("This is counter in correct word", counterCorrect);
-            //let counterSubstringAttempt = countLetter(lastAttempt.substring(0, index + 1).split(''), n);
-            let counterSubstringAttempt = countLetter(noGreensAttempt.join('').substring(0, index + 1).split(''), n);
-            console.log("This is substring", noGreensAttempt.join('').substring(0, index + 1).split(''));
+            let counterCorrect = countLetter(noGreensCorrect, n);
+            console.log("There is ", counterCorrect + " yellow " + n + " misplaced");
+
+            let substring = noGreensAttempt.join('').substring(0, index).split('');
+            substring = substring == '' ? noGreensAttempt[0] : substring;
+            console.log("This is substring", substring);
+            console.log("Type of substring", typeof substring)
+
+            let counterSubstringAttempt = countLetter(substring, n);
             console.log("This is counter substring", counterSubstringAttempt);
+
             if (counterSubstringAttempt <= counterCorrect) {
                 board.classes[index] = 'miss';
             }
