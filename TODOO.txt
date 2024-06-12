@@ -1,11 +1,10 @@
 TO DO
--   Create a service for 5 letter word API
-    -   Refactor the name
-    -   Call it at beginning of the game
-    -   Set model's secretWord with result value
--   On last input, validate that all other inputs are valid
--   Stop refresh from resetting game
 -   Make it mobile friendly
-    - print events on input change
--   Make user input lowercase or uppercase
-    - Be consistent
+    - 
+    - 
+
+-   On last input, validate that all other inputs are valid
+
+-   Stop refresh from resetting game
+
+-   Go backwards() on last input Square should only go backwards the second time its clicked

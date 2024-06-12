@@ -1,3 +1,4 @@
+import { loadMobileHandlers } from "../ui/mobile-board-ui.js";
 import { loadHandlers } from "../ui/board-ui.js";
 import boardService from "../services/board-service.js";
 
@@ -7,6 +8,7 @@ boardView.show = function () {
     if (boardService.getCurrentRound() === 0) {
         let board = '<div id="board"></div>';
         $(board).appendTo('#main-content');
+        initHandler();
         renderBoard();
         return;
     }
@@ -36,7 +38,6 @@ let renderRound = function () {
     renderInputRow(currentRound);
 }
 
-
 let renderInputRow = function (currentRow) {
 
     const row = $(`#row-${currentRow}-square`);
@@ -50,7 +51,7 @@ let renderInputRow = function (currentRow) {
         $(input).appendTo(row);
 
     }
-    loadHandlers(currentRow);
+    boardView.loadHandlers(currentRow);
     $(`#r${currentRow}-i0`).focus();
 }
 
@@ -78,5 +79,19 @@ let renderResultSquareRow = function (currentRow) {
         $(square).addClass(boardService.getClasses()[i]);
     }
 }
+
+function isMobileDevice() {
+    return /Mobi|Android/i.test(navigator.userAgent);
+}
+
+function initHandler() {
+    if (isMobileDevice()) {
+        boardView.loadHandlers = loadMobileHandlers;
+
+    } else {
+        boardView.loadHandlers = loadHandlers;
+    }
+}
+
 
 export default boardView;
