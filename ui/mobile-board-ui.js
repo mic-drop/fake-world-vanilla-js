@@ -8,7 +8,6 @@ export function loadMobileHandlers(currentRow) {
     squares.forEach((element, i) => {
         if (i === 4) {
             $(element).on("keyup", (e) => {
-                console.log('This is event', e);
                 if (e.key === 'Enter') {
                     const word = squares.reduce((acc, element) => {
                         return acc + $(element).val() || '';
