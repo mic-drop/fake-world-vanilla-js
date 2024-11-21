@@ -5,9 +5,9 @@ import getWord from "../services/word-api-service.js";
 
 let boardController = {};
 
-boardController.init = function () {
+boardController.init = async function () {
     console.log("board controller triggered");
-    getWord();
+    await getWord();
     boardView.show();
 }
 
